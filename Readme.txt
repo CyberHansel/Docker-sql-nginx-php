@@ -32,3 +32,7 @@ docker stop 5911c414d121
 docker rm 5911c414d121
 or
 docker rm -f 5911c414d121
+
+
+docker exec 8dc42e5bd2e5 pg_dumpall -U postgres > BACK.sql
+
