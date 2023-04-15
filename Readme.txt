@@ -23,3 +23,6 @@ docker run -p 80:80 -p 443:443 -d php
 docker run -d -p 9000:9000/tcp php
 
 docker exec -it 74dec3d16bd4 /bin/bash
+docker start 5911c414d121
+docker run --rm -d
+docker logs container_name_or_id
