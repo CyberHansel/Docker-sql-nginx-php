@@ -51,8 +51,13 @@ POSTGRES
     SELECT datname, usename FROM pg_user JOIN pg_database ON usesysid = pg_database.datdba WHERE datname = current_database();
                                                        #list of all users that have connect permission on the current database.
     SELECT * FROM pg_user WHERE usesuper = true;  #check for all superusers
-    ALTER USER postgress PASSWORD 'test123';
-
+    
+CREATE ROLE admin;
+CREATE ROLE user;                               #create role
+GRANT admin TO alice;                           #grant role to user
+ALTER USER postgress PASSWORD 'test123';        #create user
+DROP USER charlie;                              #delete user
+    
 
 
 
