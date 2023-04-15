@@ -66,6 +66,10 @@ CREATE USER newuser WITH PASSWORD 'newpassword';         #create user
 DROP USER charlie;                                       #delete user
 ALTER USER postgress PASSWORD 'test123';                 #change password tp user
 
+#check which users have replication privileges in PostgreSQL
+SELECT usename FROM pg_user WHERE useconfig = 'true' AND usecreatedb = 'false' AND usesuper = 'false' AND userepl = 'true';
+
+
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 8dc42e5bd2e5           #Gets container ip addr
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.GlobalIPv6Address}}{{end}}' 8dc42e5bd2e5   #ip for ipv6
