@@ -45,7 +45,9 @@ POSTGRES
 
 \l                 #list all db's
 \c [database_name]
-    \du                             #This command shows a list of all users in the current 
+\du                             #This command shows a list of all users in the current 
+\q                      #exit
+
     SELECT * FROM pg_stat_activity;     #list all current sessions (known as "backends") that are connected to database
     SELECT usename FROM pg_user;        #list of all users that are defined in the database system.
     SELECT datname, usename FROM pg_user JOIN pg_database ON usesysid = pg_database.datdba WHERE datname = current_database();
@@ -63,6 +65,10 @@ GRANT admin TO alice;                                    #grant role to user
 CREATE USER newuser WITH PASSWORD 'newpassword';         #create user
 DROP USER charlie;                                       #delete user
 ALTER USER postgress PASSWORD 'test123';                 #change password tp user
+
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 8dc42e5bd2e5           #Gets container ip addr
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.GlobalIPv6Address}}{{end}}' 8dc42e5bd2e5   #ip for ipv6
 
 
 
