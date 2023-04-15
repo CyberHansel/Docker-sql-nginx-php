@@ -18,4 +18,8 @@ docker save -o docker.tar dock1
 docker load -i docker.tar         #load docker
 
 docker images
-docker run --name my_php_container -d -p 80:80 php:latest
+docker run --name portal_web_1 -p 80:80 -p 443:443 -d php
+docker run -p 80:80 -p 443:443 -d php
+docker run -d -p 9000:9000/tcp php
+
+docker exec -it 74dec3d16bd4 /bin/bash
