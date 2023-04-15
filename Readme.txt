@@ -27,12 +27,27 @@ docker start 5911c414d121
 docker run --rm -d image
 docker logs container_name_or_id
 docker inspect container_name_or_id
+docker inspect portal_web_1 > portal_web_1-config.json
+
 
 docker stop 5911c414d121
 docker rm 5911c414d121
 or
 docker rm -f 5911c414d121
 
+Nē. Vajadzētu bekapot docker run konfigu, lai var docker-compose pēc tam uztaisīt, kā arī datus, kurus izmanto docker konteineri (mounti).
 
 docker exec 8dc42e5bd2e5 pg_dumpall -U postgres > BACK.sql
+pg_restore -U postgres -d joomladb BACK.sql
+
+
+POSTGRES
+
+\l                 #list all db's
+\c [database_name]
+    \du                             #This command shows a list of all users in the current 
+    SELECT * FROM pg_stat_activity;     #list all current sessions (known as "backends") that are connected to database
+    SELECT usename FROM pg_user;        #list of all users that are defined in the database system.
+    SELECT datname, usename FROM pg_user JOIN pg_database ON usesysid = pg_database.datdba WHERE datname = current_database();
+                                                       #list of all users that have connect permission on the current database.
 
