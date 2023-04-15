@@ -24,5 +24,11 @@ docker run -d -p 9000:9000/tcp php
 
 docker exec -it 74dec3d16bd4 /bin/bash
 docker start 5911c414d121
-docker run --rm -d
+docker run --rm -d image
 docker logs container_name_or_id
+docker inspect container_name_or_id
+
+docker stop 5911c414d121
+docker rm 5911c414d121
+or
+docker rm -f 5911c414d121
