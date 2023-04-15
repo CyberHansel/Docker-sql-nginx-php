@@ -17,3 +17,5 @@ docker commit <dockername> dock1  #dock1 any name
 docker save -o docker.tar dock1
 docker load -i docker.tar         #load docker
 
+docker images
+docker run --name my_php_container -d -p 80:80 php:latest
