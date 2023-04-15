@@ -52,12 +52,17 @@ POSTGRES
                                                        #list of all users that have connect permission on the current database.
     SELECT * FROM pg_user WHERE usesuper = true;  #check for all superusers
     
-CREATE ROLE admin;
-CREATE ROLE user;                               #create role
-GRANT admin TO alice;                           #grant role to user
-ALTER USER postgress PASSWORD 'test123';        #create user
-DROP USER charlie;                              #delete user
-    
+CREATE ROLE admin;                                       #create admin role
+GRANT ALL PRIVILEGES ON DATABASE mydatabase TO admin;    #grant privileges to roles
+
+CREATE ROLE user;                                        #create user role
+GRANT SELECT ON TABLE mytable TO user;                   #grant privileges to roles
+GRANT SELECT, INSERT, UPDATE ON TABLE mytable TO user;   #example of INSERT, UPDATE, DELETE etc.
+
+GRANT admin TO alice;                                    #grant role to user
+CREATE USER newuser WITH PASSWORD 'newpassword';         #create user
+DROP USER charlie;                                       #delete user
+ALTER USER postgress PASSWORD 'test123';                 #change password tp user
 
 
 
